@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->integer('imagable_id');
             $table->string('imagable_type');
+            $table->unsignedBigInteger('imagable_id');
             $table->string('size');
             $table->string('path');
             $table->string('name');

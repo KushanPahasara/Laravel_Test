@@ -16,5 +16,15 @@ class Categories extends Model
         'description',
     ];
 
-    public $timestamps = false; // Disable timestamps
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategories::class);
+    }
+
+    public function issues()
+    {
+        return $this->belongsToMany(Issues::class, 'issue_categories');
+    }
+
+    public $timestamps = false; 
 }

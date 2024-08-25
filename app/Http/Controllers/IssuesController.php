@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class IssuesController extends Controller
 {
-    // Store a new issue
     public function store(Request $request)
     {
         $request->validate([
@@ -27,21 +26,19 @@ class IssuesController extends Controller
         return response()->json(['message' => 'Issue created successfully!'], 201);
     }
 
-    // Get all issues
     public function index()
     {
-        $issues = Issues::all(); // Retrieves all issues
+        $issues = Issues::all(); 
         return response()->json($issues);
     }
 
-    // Get a specific issue by ID
+
     public function show($id)
     {
-        $issue = Issues::findOrFail($id); // Find the issue by ID or return 404
+        $issue = Issues::findOrFail($id); 
         return response()->json($issue);
     }
 
-    // Update a specific issue by ID
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -51,7 +48,7 @@ class IssuesController extends Controller
             'slug' => 'required|string|unique:issues,slug,' . $id,
         ]);
 
-        $issue = Issues::findOrFail($id); // Find the issue by ID
+        $issue = Issues::findOrFail($id); 
         $issue->update([
             'title' => $request->title,
             'body' => $request->body,
@@ -62,11 +59,11 @@ class IssuesController extends Controller
         return response()->json(['message' => 'Issue updated successfully!']);
     }
 
-    // Delete a specific issue by ID
+    
     public function destroy($id)
     {
-        $issue = Issues::findOrFail($id); // Find the issue by ID
-        $issue->delete(); // Delete the issue
+        $issue = Issues::findOrFail($id); 
+        $issue->delete(); 
 
         return response()->json(['message' => 'Issue deleted successfully!']);
     }

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('issue_subcategories', function (Blueprint $table) {
             $table->id();
-            $table->integer('issue_id');
-            $table->integer('subcategory_id');
+            $table->foreignId('issue_id')->constrained('issues')->onDelete('cascade');
+            $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade');
             $table->timestamps();
         });
+        
     }
 
     /**

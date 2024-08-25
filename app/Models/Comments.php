@@ -15,6 +15,11 @@ class Comments extends Model
         'issue_id',
         'body',
     ];
+
+    public function issue()
+    {
+        return $this->belongsTo(Issues::class);
+    }
     
-    public $timestamps = false; // Disable timestamps
+    public $timestamps = false; 
 }
