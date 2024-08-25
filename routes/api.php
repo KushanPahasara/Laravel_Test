@@ -9,7 +9,8 @@ Route::post('/categories', [CategoriesController::class, 'store']);
 Route::get('/categories', [CategoriesController::class, 'index']); 
 Route::get('/categories/{id}', [CategoriesController::class, 'show']); 
 Route::put('/categories/{id}', [CategoriesController::class, 'update']); 
-Route::delete('/categories/{id}', [CategoriesController::class, 'destroy']); 
+Route::delete('/categories/{id}', [CategoriesController::class, 'destroy']);
+ 
 
 use App\Http\Controllers\CommentsController;
 
@@ -25,7 +26,8 @@ Route::post('/issues', [IssuesController::class, 'store']);
 Route::get('/issues', [IssuesController::class, 'index']); 
 Route::get('/issues/{id}', [IssuesController::class, 'show']); 
 Route::put('/issues/{id}', [IssuesController::class, 'update']); 
-Route::delete('/issues/{id}', [IssuesController::class, 'destroy']); 
+Route::delete('/issues/{id}', [IssuesController::class, 'destroy']);
+Route::post('/issues/{id}/categories/attach', [IssuesController::class, 'attachCategories']); 
 
 use App\Http\Controllers\SubcategoriesController;
 

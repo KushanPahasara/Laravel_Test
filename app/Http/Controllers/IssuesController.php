@@ -67,4 +67,19 @@ class IssuesController extends Controller
 
         return response()->json(['message' => 'Issue deleted successfully!']);
     }
+
+    public function attachCategories(Request $request, $issueId)
+{
+    $issue = Issues::findOrFail($issueId);
+
+    $validatedData = $request->validate([
+        'category_ids' => 'required|array',  
+        'category_ids.*' => 'exists:categories,id', 
+    ]);
+
+    
+    $issue->categories()->attach($validatedData['category_ids']);
+
+    return response()->json(['message' => 'Issue_categories add successfully!'], 201);
+}
 }
